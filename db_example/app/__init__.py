@@ -25,6 +25,7 @@ from app import db, User
 def index():
     return render_template("index.html")
 
+
 @app.route('/create', methods=['POST'])
 def create():
     input = request.form
@@ -33,7 +34,6 @@ def create():
     hobbies = input['hobbies']
     create_my_user(first_name, last_name, hobbies)
     return redirect(url_for('users'))
-
 
 
 @app.route('/delete', methods=['POST'])
@@ -46,7 +46,7 @@ def delete():
     else:
         print("input from user is: {}".format(user_id))
         ans = User.query.filter_by(id = user_id).first()
-        if (ans is not None):
+        if ans is not None:
             db.session.delete(ans)
             db.session.commit()
     return redirect(url_for('users'))
@@ -55,40 +55,39 @@ def delete():
 @app.route('/read', methods=['GET'])
 def read():
     input = request.args.get('id')
-    print('hwereh ',input)
     try:
         user_id = int(input)
-        print('here')
     except ValueError:
         print("ValueError not an integer")
     else:
         print("input from user is: {}".format(user_id))
         ans = User.query.filter_by(id = user_id).first()
-        if (ans is not None):
-            print('hello ',ans)
+        if ans is not None:
             return redirect('/users/{}'.format(user_id))
+            # return redirect( url_for('users',uid=4))
+            # {{ url_for ('about',uid=1) }}
     return redirect(url_for('users'))
+
 
 @app.route('/update', methods=['POST'])
 def update():
     input = request.form
     try:
         user_id = int(input['id'])
-        print('user id ',user_id)
     except ValueError:
         print("ValueError not an integer")
     else:
         first_name = input['first_name']
         last_name = input['last_name']
         hobbies = input['hobbies']
-        #if first_name is empty no change
+        # if first_name is empty no change
         ans = User.query.filter_by(id = user_id).first()
         if (ans is not None):
-            if (first_name != ''):
+            if first_name != '':
                 ans.first_name = first_name
-            if (last_name != ''):
+            if last_name != '':
                 ans.last_name = last_name
-            if (hobbies != ''):
+            if hobbies != '':
                 ans.hobbies = hobbies
             db.session.commit()
     return redirect(url_for('users'))

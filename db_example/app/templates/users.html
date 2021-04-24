@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+<!-- {% extends "base.html" %} -->
 
 {% block title %}Users | {{ super() }}{% endblock title %}
 {% block css %}
@@ -26,72 +26,77 @@
 </div>
 <br></br>
 <div class="container">
-    <div class="d-flex justify-content-between bh-highlight">
-        <form action="{{ url_for('create') }}" method="POST">
-            <label>
-                <h4>Create a new user:</h4>
-            </label>
-            <br>
-            <label>First Name</label>
-            <input type='text' name="first_name" value="" style="margin-left: 18px; width:200px;" autofocus>
-            <br>
-            <label>Last Name</label>
-            <input type='text' name="last_name" value="" style="margin-left: 20px; width:200px;" autofocus>
-            <br>
-            <label>Your Hobbies</label>
-            <input type='text' name='hobbies' value="" style="width:200px;" autofocus>
-            <br>
-            <input type="submit" value="create" style="width: 298px;">
-        </form>
+    <div class="row">
+        <div class="col">
+            <form action="{{ url_for('create') }}" method="POST">
+                <label>
+                    <h4>Create a new user:</h4>
+                </label>
+                <br>
+                <label>First Name</label>
+                <input type='text' name="first_name" value="" style="margin-left: 18px; width:199px;" autofocus>
+                <br>
+                <label>Last Name</label>
+                <input type='text' name="last_name" value="" style="margin-left: 20px; width:199px;" autofocus>
+                <br>
+                <label>Your Hobbies</label>
+                <input type='text' name='hobbies' value="" style="width:199px;" autofocus>
+                <br>
+                <input type="submit" value="create" style="width: 298px;">
+            </form>
+        </div>
 
-        <form action="{{ url_for('read') }}" method="GET">
-            <label>
-                <h4>Read or view a user</h4>
-            </label>
-            <br>
-            <label>Enter an ID</label>
-            <input type='text' name='id' value='' autofocus>
-            <br>
-            <input type='submit' value='get' style="width: 265px;">
-        </form>
+        <div class="col">
+            <form action="{{ url_for('read') }}" method="GET">
+                <label>
+                    <h4>Read or view a user</h4>
+                </label>
+                <br>
+                <label>Enter an ID</label>
+                <input type='text' name='id' value='' style="width: 216px;" autofocus>
+                <br>
+                <input type='submit' value='get' style="width: 298px;">
+            </form>
+        </div>
     </div>
-</div>
-<br></br>
-<div class="container">
-    <div class="d-flex justify-content-between bd-highlight">
 
-        <form action="{{ url_for('update') }}" method="POST">
-            <label>
-                <h4>Update a user:</h4>
-            </label>
-            <br>
-            <label>[ID] of user</label>
-            <input type='text' name='id' value='' style="margin-left: 16px;" autofocus>
-            <br>
-            <label>First Name</label>
-            <input type='text' name='first_name' value='' style="margin-left: 18px;" autofocus>
-            <br>
-            <label>Last Name</label>
-            <input type='text' name='last_name' value='' style="margin-left: 20px;" autofocus>
-            <br>
-            <label>Your Hobbies</label>
-            <input type='text' name='hobbies' value='' autofocus>
-            <br>
-            <input type='submit' value='update' style="width: 280px;">
-        </form>
+    <div class="row">
+        <div class="col">
+            <form action="{{ url_for('update') }}" method="POST">
+                <label>
+                    <h4>Update a user:</h4>
+                </label>
+                <br>
+                <label>[ID] of user</label>
+                <input type='text' name='id' value='' style="margin-left: 16px; width: 199px;" autofocus>
+                <br>
+                <label>First Name</label>
+                <input type='text' name='first_name' value='' style="margin-left: 18px; width: 199px;"  autofocus>
+                <br>
+                <label>Last Name</label>
+                <input type='text' name='last_name' value='' style="margin-left: 20px; width:199px;" autofocus>
+                <br>
+                <label>Your Hobbies</label>
+                <input type='text' name='hobbies' value='' style="width:199px;" autofocus>
+                <br>
+                <input type='submit' value='update' style="width: 298px;">
+            </form>
+        </div>
 
-
-        <form action="{{ url_for('delete') }}" method="POST">
-            <label>
-                <h4>Delete a user:</h4>
-            </label>
-            <br>
-            <label>ID of user</label>
-            <input type="text" name="id" value="" autofocus>
-            <br>
-            <input type="submit" value="delete" style="width: 255px;">
-        </form>
+        <div class="col">
+            <form action="{{ url_for('delete') }}" method="POST">
+                <label>
+                    <h4>Delete a user:</h4>
+                </label>
+                <br>
+                <label>ID of user</label>
+                <input type="text" name="id" value="" style="width: 225px;" autofocus>
+                <br>
+                <input type="submit" value="delete" style="width: 298px;">
+            </form>
+        </div>
     </div>
+
 </div>
 
 {% endblock content %}
