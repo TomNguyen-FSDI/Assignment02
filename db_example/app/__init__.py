@@ -36,7 +36,7 @@ def create():
     return redirect(url_for('users'))
 
 
-@app.route('/delete', methods=['POST'])
+@app.route('/delete', methods=['POST','DELETE'])
 def delete():
     input = request.form
     try:
@@ -69,7 +69,7 @@ def read():
     return redirect(url_for('users'))
 
 
-@app.route('/update', methods=['POST'])
+@app.route('/update', methods=['POST','UPDATE'])
 def update():
     input = request.form
     try:
